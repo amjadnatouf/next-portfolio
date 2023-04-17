@@ -16,12 +16,14 @@ export default function About() {
     <Container className={classes.container}>
       <section style={{ maxWidth: "65ch" }}>
         <h1 className="font-bold text-3xl font-serif">About Amjad</h1>
-        <p className="my-5">Hey there, I'm Amjad, a full stack developer.</p>
+        <p className="my-5">
+          Hey there, I&apos;m Amjad, a full stack developer.
+        </p>
         <div className="">
           <p>
-            I'm passionate about creating seamless and visually-pleasing user
-            experiences. I'm currently working at Swedcon 18 and have a
-            background in software engineering. My expertise covers full-stack
+            I&apos;m passionate about creating seamless and visually-pleasing
+            user experiences. I&apos;m currently working at Swedcon 18 and have
+            a background in software engineering. My expertise covers full-stack
             development with Node.js and MongoDB, but I enjoy focusing on the
             front-end and crafting exceptional user experiences.
           </p>
@@ -42,7 +44,7 @@ export default function About() {
           </p>
           <p className="mb-5">
             I understand that your company is involved in a food drive that
-            helps the food bank, and I'm excited to hear that. Do you ever
+            helps the food bank, and I&apos;m excited to hear that. Do you ever
             organize company outings that involve volunteering in the community?
             I would be thrilled to participate and contribute to such
             initiatives.
