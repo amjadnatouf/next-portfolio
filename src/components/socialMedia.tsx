@@ -9,6 +9,7 @@ import {
 const useStyles = createStyles((theme) => ({
   icon: {
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
+    background: "transparent",
     "&:hover": {
       color: theme.white,
     },
