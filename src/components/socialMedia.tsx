@@ -11,10 +11,10 @@ const useStyles = createStyles((theme) => ({
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     background: "transparent",
     border: "1px solid rgb(55 65 81 /1)",
-    width: "100%",
+    width: "auto",
 
     [theme.fn.smallerThan("sm")]: {
-      width: "auto",
+      width: "100%",
     },
 
     "&:hover": {
