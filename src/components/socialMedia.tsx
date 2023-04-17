@@ -12,6 +12,7 @@ const useStyles = createStyles((theme) => ({
     background: "transparent",
     border: "1px solid rgb(55 65 81 /1)",
     width: "auto",
+    minHeight: "4rem",
 
     [theme.fn.smallerThan("xs")]: {
       width: "100%",
@@ -50,9 +51,9 @@ export default function SocialMediaButtons() {
       {socialMediaLinks.map((link) => (
         <Button
           key={link.label}
-          className={`py-2 h-auto py-3 ${classes.icon}`}
+          className={classes.icon}
           leftIcon={<link.icon />}
-          rightIcon={<IconArrowUpRight size="2rem" />}
+          rightIcon={<IconArrowUpRight />}
           onClick={() => window.open(link.link, "_blank")}
         >
           {link.label}

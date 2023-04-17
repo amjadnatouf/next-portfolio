@@ -51,7 +51,7 @@ export default function About() {
           </p>
         </div>
       </section>
-      <Group position="left" sx={{ margin: "2rem 0 2rem 0" }}>
+      <Group position="left" sx={{ margin: "2rem 0" }}>
         <SocialMedia />
       </Group>
     </Container>
