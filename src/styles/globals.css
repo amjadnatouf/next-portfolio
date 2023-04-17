@@ -2,26 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.projects-list {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  margin-bottom: 6rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.project-image {
+  grid-area: 1 / 1 / -1 / 7;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.project-content {
+  grid-area: 1 / 6 / -1 / -1;
+  z-index: 1;
+  text-align: end;
+}
+
+.project:nth-child(2n + 1) .project-image {
+  grid-column-start: 7;
+  grid-column-end: -1;
+}
+
+.project:nth-child(2n + 1) .project-content {
+  grid-column-start: 1;
+  grid-column-end: 9;
+  text-align: start;
+}
+
+.project:nth-child(2n + 1) .technology {
+  justify-content: start;
+}
+
+.project:nth-child(2n) .project-image {
+  grid-column-start: 1;
+  grid-column-end: 7;
+}
+
+.project:nth-child(2n) .project-content {
+  grid-column-start: 5;
+  grid-column-end: -1;
+}
+
+.project:nth-child(2n) .technology {
+  justify-content: end;
+}
+
+@media (max-width: 768px) {
+    .project-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      grid-column: 1 / -1;
+      z-index: 5;
+    }
+    
+    .project-image {
+      grid-column: 1 / -1;
+      height: 100%;
+      opacity: 0.25;
+    }
+  
+    .project:nth-child(2n + 1) .project-image,
+    .project:nth-child(2n) .project-image {
+      grid-column: 1 / -1;
+    }
+  
+    .project:nth-child(2n) .project-content,
+    .project:nth-child(2n + 1) .project-content {
+      grid-column: 1 / -1;
+      text-align: left;
+    }
+    .project:nth-child(2n+1) .technology,
+    .project:nth-child(2n) .technology {
+      justify-content: start;
+    }
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
