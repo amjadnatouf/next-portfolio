@@ -11,16 +11,15 @@ const useStyles = createStyles((theme) => ({
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     background: "transparent",
     border: "1px solid rgb(55 65 81 /1)",
+    width: "auto",
 
-    [theme.fn.smallerThan("sm")]: {
+    [theme.fn.smallerThan("xs")]: {
       width: "100%",
     },
 
-    [theme.fn.smallerThan("md")]: {
-      width: "30%",
-    },
     "&:hover": {
       color: theme.white,
+      background: theme.fn.darken("#228be6", 0.05),
     },
   },
 }));

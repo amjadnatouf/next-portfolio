@@ -153,7 +153,10 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
       onClick={handleClose}
     >
       <Container className={classes.header}>
-        <div style={{ width: "30px" }}>
+        <div
+          style={{ width: "30px", cursor: "pointer" }}
+          onClick={() => router.push("/")}
+        >
           <MySvg fill={classes.logo} />
         </div>
         <Group spacing={5} className={classes.links}>
