@@ -156,8 +156,6 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
         <div style={{ width: "30px" }}>
           <MySvg fill={classes.logo} />
         </div>
-        {/* <IconLetterA size={28} /> */}
-        {/* <h1>HELLO</h1> */}
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
@@ -177,13 +175,9 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
             className={classes.burger}
             size="sm"
           />
-          <Overlay
-            opacity={0.2}
-            fixed={true}
-            zIndex={-1}
-            display={!opened && "none"}
-            onClick={close}
-          />
+          {opened && (
+            <Overlay opacity={0.2} fixed={true} zIndex={-1} onClick={close} />
+          )}
           <Transition
             transition="pop-top-right"
             duration={200}
