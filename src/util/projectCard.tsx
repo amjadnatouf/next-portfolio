@@ -22,7 +22,10 @@ export default function ProjectCard({ project }: projectProps) {
           <Title order={3} size={40} my={9}>
             {project.title}
           </Title>
-          <Text className="shadow-lg transition duration-300 relative z-20 p-4 sm:p-6 rounded bg-slate-800 text-base md:text-lg text-white">
+          <Text
+            className="shadow-lg relative z-20 p-4 sm:p-6 rounded bg-slate-800 text-base md:text-lg"
+            color={"#fff"}
+          >
             {project.description}
           </Text>
           <ul className="flex flex-wrap mt-3 technology">

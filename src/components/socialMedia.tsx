@@ -10,6 +10,7 @@ const useStyles = createStyles((theme) => ({
   icon: {
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     background: "transparent",
+    border: "1px solid rgb(55 65 81 /1)",
     "&:hover": {
       color: theme.white,
     },
@@ -42,7 +43,7 @@ export default function SocialMediaButtons() {
       {socialMediaLinks.map((link) => (
         <Button
           key={link.label}
-          className={`py-2 border-gray-700 border-1 h-auto py-3 w-full sm:w-auto  ${classes.icon}`}
+          className={`py-2 h-auto py-3 w-full sm:w-auto  ${classes.icon}`}
           leftIcon={<link.icon />}
           rightIcon={<IconArrowUpRight size="2rem" />}
           onClick={() => window.open(link.link, "_blank")}
