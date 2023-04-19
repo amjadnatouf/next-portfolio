@@ -3,9 +3,10 @@ import FeaturesCards from "../components/features";
 import ServicesCards from "../components/services";
 import { name, about, bio } from "../content/aboutMe";
 import avatar from "../../public/assets/avatar.webp";
-import image from "../../public/assets/bg-home.webp";
+import backgroundImage from "../../public/assets/bg-home.webp";
 import { IconArrowUpRight } from "@tabler/icons-react";
-import { createStyles, Container, rem, Image } from "@mantine/core";
+import { createStyles, Container, rem } from "@mantine/core";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Welcome to My Portfolio",
@@ -87,13 +88,7 @@ export default function Home() {
             {about()}
           </p>
           <div className="flex items-center justify-start gap-[5px] sm:gap-5">
-            <Image
-              alt={name}
-              src={avatar.src}
-              width={100}
-              height={100}
-              radius={100}
-            />
+            <Image alt={name} src={avatar.src} width={100} height={100} />
             <ul className="flex items-start justify-center flex-col font-sm text-neutral-500 dark:text-neutral-400">
               <li>
                 <a
@@ -121,7 +116,13 @@ export default function Home() {
           </div>
           <p className={`my-5 max-w-[500px] ${classes.description}`}>{bio()}</p>
         </section>
-        <Image src={image.src} className={classes.image} alt="" />
+        <Image
+          src={backgroundImage.src}
+          className={classes.image}
+          alt="bg-home"
+          width={350}
+          height={350}
+        />
       </div>
       <ServicesCards />
       <FeaturesCards />
