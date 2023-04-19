@@ -48,7 +48,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function FooterLinks() {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
 
   return (
     <footer className={classes.footer}>
@@ -57,7 +57,10 @@ export default function FooterLinks() {
           justify={{ base: "center", md: "space-between" }}
           align={"center"}
         >
-          <Text color="dimmed" size="sm">
+          <Text
+            color={theme.colorScheme === "dark" ? "#fffd" : "dark"}
+            size="sm"
+          >
             Copyright © 2020 Amjad M Natouf
             <span className={classes.span}> - Powered by Namecheap.</span>
           </Text>

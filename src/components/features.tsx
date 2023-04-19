@@ -59,6 +59,7 @@ const useStyles = createStyles((theme) => ({
 
   description: {
     maxWidth: 600,
+    color: theme.colorScheme === "dark" ? "#fffd" : "dark",
   },
 
   card: {
@@ -93,7 +94,11 @@ export default function FeaturesCards() {
       <Text fz="lg" fw={500} className={classes.cardTitle} mt="md">
         {feature.title}
       </Text>
-      <Text fz="sm" c="dimmed" mt="sm">
+      <Text
+        fz="sm"
+        mt="sm"
+        color={theme.colorScheme === "dark" ? "#fffd" : "dark"}
+      >
         {feature.description}
       </Text>
     </Card>
@@ -111,7 +116,7 @@ export default function FeaturesCards() {
         Unlocking My Unique Value: 3 Ways I Can Positively Impact Your Team
       </Title>
 
-      <Text c="dimmed" className={classes.description} ta="left" mt="md">
+      <Text className={classes.description} ta="left" mt="md">
         There are several compelling reasons why selecting me would be an
         excellent decision. Here are three key factors that set me apart and
         make me a valuable addition to your team:

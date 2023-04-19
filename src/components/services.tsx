@@ -17,13 +17,13 @@ import {
 
 const mockdata = [
   {
-    title: "Responsive Design Wizard",
+    title: "Responsive Design",
     description:
       "I specialize in creating responsive websites that adapt seamlessly to any device or screen size. Let me work my responsive design wizardry to ensure your website looks great on every device.",
     icon: IconDevices,
   },
   {
-    title: "UI/UX Ninja",
+    title: "UI/UX Designer",
     description:
       "With my expertise in user interface and user experience design, I can create a website that not only looks beautiful but also functions flawlessly. Let me be your UI/UX ninja and elevate your online presence.",
     icon: IconCrown,
@@ -100,7 +100,7 @@ interface CardGradientProps {
 }
 
 export default function ServicesCards() {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
   const services = mockdata.map((service) => (
     <Paper withBorder radius="md" className={classes.card} key={service.title}>
       <ThemeIcon
@@ -114,7 +114,11 @@ export default function ServicesCards() {
       <Text size="xl" weight={500} mt="md">
         {service.title}
       </Text>
-      <Text size="md" mt="sm" color="dimmed">
+      <Text
+        size="md"
+        mt="sm"
+        color={theme.colorScheme === "dark" ? "#fffd" : "dark"}
+      >
         {service.description}
       </Text>
     </Paper>
