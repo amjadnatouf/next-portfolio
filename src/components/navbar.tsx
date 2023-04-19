@@ -164,12 +164,12 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
         </Group>
         <div className="flex flex-row-reverse items-center justify-center">
           <ActionIcon
-            variant="outline"
             color={dark ? "yellow" : "blue"}
             onClick={() => toggleColorScheme()}
             title="Toggle color scheme"
+            aria-label="color scheme"
           >
-            {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
+            {dark ? <IconSun color="#fcc419" /> : <IconMoonStars />}
           </ActionIcon>
 
           <Burger
@@ -177,6 +177,7 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
             onClick={toggle}
             className={classes.burger}
             size="sm"
+            aria-label="Burger"
           />
           {opened && (
             <Overlay opacity={0.2} fixed={true} zIndex={-1} onClick={close} />
