@@ -60,10 +60,10 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         >
           <Navbar
             links={[
-              { link: "home", label: "home" },
-              { link: "about", label: "about" },
-              { link: "portfolio", label: "portfolio" },
-              { link: "contact", label: "contact" },
+              { link: "home", label: "Home" },
+              { link: "about", label: "About" },
+              { link: "portfolio", label: "Portfolio" },
+              { link: "contact", label: "Contact" },
             ]}
           />
           <Component {...pageProps} />
