@@ -127,14 +127,23 @@ export default function Navbar({ links }: HeaderResponsiveProps) {
       className={cx(classes.link, {
         [classes.linkActive]: active === link.link,
       })}
-      onClick={(event) => {
+      onClick={async (event) => {
         event.preventDefault();
-        setActive(link.link);
-        link.label === "home"
-          ? router.push("/")
-          : router.push(`/${link.label}`);
-
-        close();
+        try {
+          setActive(link.link);
+          if (link.label === "Home") {
+            await router.push("/");
+          } else {
+            await router.push(`/${link.link}`);
+          }
+          close();
+        } catch (error) {
+          if (error === "AbortError") {
+            console.log("Request aborted");
+          } else {
+            throw error;
+          }
+        }
       }}
     >
       {link.label}
