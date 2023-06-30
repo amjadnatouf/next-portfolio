@@ -10,6 +10,7 @@ import {
   ColorScheme,
   ColorSchemeProvider,
 } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -58,6 +59,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
           withGlobalStyles
           withNormalizeCSS
         >
+          <Notifications position="top-right" />
           <Navbar
             links={[
               { link: "home", label: "Home" },

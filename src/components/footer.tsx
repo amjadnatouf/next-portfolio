@@ -18,6 +18,10 @@ const useStyles = createStyles((theme) => ({
     width: "70%",
     margin: "0 auto",
 
+    [theme.fn.largerThan("md") && theme.fn.smallerThan("lg")]: {
+      width: "80%",
+    },
+
     [theme.fn.smallerThan("sm")]: {
       width: "95%",
     },

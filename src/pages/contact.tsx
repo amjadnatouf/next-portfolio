@@ -11,6 +11,11 @@ import {
 } from "@mantine/core";
 import { Metadata } from "next";
 import { ContactIconsList } from "../components/contactIconsList";
+import { FormEvent, useRef } from "react";
+import emailjs from '@emailjs/browser';
+import { showNotification } from "@mantine/notifications";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export const metadata: Metadata = {
   title: "Contact Me",
@@ -90,21 +95,74 @@ const useStyles = createStyles((theme) => {
 
 export default function Contact() {
   const { classes } = useStyles();
+  const ref = useRef();
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    emailjs
+      .sendForm('service_2ue2355', 'template_1xv1njw', ref.current, '44y2DhQy7o9qaoYpI')
+      .then((result) => {
+        console.log(result.text);
+        showNotification({
+          title: 'Success',
+          message: "Your email has been sent. We'll get back to you soon :)",
+          color: 'blue',
+        });
+      }, (error) => {
+        console.log(error.text);
+        showNotification({
+          message: "Failed to send email.",
+          color: 'red',
+        });
+      });
+  };
+
+  const formVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const contactsVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  const [formRef, inViewForm] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const [contactsRef, inViewContacts] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
 
   return (
     <Container className={classes.container}>
       <div className={classes.wrapper}>
-        <div className={classes.contacts}>
+        <motion.div
+          className={classes.contacts}
+          ref={contactsRef}
+          initial={inViewContacts ? "visible" : "hidden"}
+          animate={inViewContacts ? "visible" : "hidden"}
+          variants={contactsVariants}
+          transition={{ duration: 0.5 }}
+        >
           <Text fz="lg" fw={700} className={classes.title}>
             Contact information
           </Text>
 
           <ContactIconsList variant="white" />
-        </div>
+        </motion.div>
 
-        <form
+        <motion.form
+          ref={formRef}
           className={classes.form}
-          onSubmit={(event) => event.preventDefault()}
+          onSubmit={handleSubmit}
+          initial={inViewForm ? "visible" : "hidden"}
+          animate={inViewForm ? "visible" : "hidden"}
+          variants={formVariants}
+          transition={{ duration: 0.5 }}
         >
           <Text fz="lg" fw={700} className={classes.title}>
             Get in touch
@@ -112,21 +170,23 @@ export default function Contact() {
 
           <div className={classes.fields}>
             <SimpleGrid cols={1}>
-              <TextInput label="Your name" placeholder="Your name" />
+              <TextInput label="Your name" placeholder="Your name" name="from_name" />
               <TextInput
                 label="Your email"
                 placeholder="hello@mantine.dev"
                 required
+                name="from_email"
               />
             </SimpleGrid>
 
-            <TextInput mt="md" label="Subject" placeholder="Subject" required />
+            <TextInput mt="md" label="Subject" placeholder="Subject" required name="subject" />
 
             <Textarea
               mt="md"
               label="Your message"
               placeholder="Please include all relevant information"
               minRows={3}
+              name="message"
             />
 
             <Group position="right" mt="md">
@@ -135,7 +195,7 @@ export default function Contact() {
               </Button>
             </Group>
           </div>
-        </form>
+        </motion.form>
       </div>
     </Container>
   );

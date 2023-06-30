@@ -1,20 +1,46 @@
+import { motion } from "framer-motion";
 import SocialMedia from "../components/socialMedia";
 import { Container, Divider, Group } from "@mantine/core";
 import { Metadata } from "next";
 import { useStyles } from "./index";
+import { useInView } from "react-intersection-observer";
 
 export const metadata: Metadata = {
   title: "About Amjad",
-  description:
-    "Front-end developer passionate about creating seamless user experiences.",
+  description: "Front-end developer passionate about creating seamless user experiences.",
 };
 
 export default function About() {
   const { classes } = useStyles();
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: -100 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const socialMediaVariants = {
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1 },
+  };
+
+  const [containerRef, containerInView] = useInView({
+    triggerOnce: true
+  });
+
+  const [socialMediaRef, socialMediaInView] = useInView({
+    triggerOnce: true
+  });
+
   return (
     <Container className={classes.container}>
-      <section style={{ maxWidth: "65ch" }}>
+      <motion.section
+        style={{ maxWidth: "65ch" }}
+        initial="hidden"
+        animate={containerInView ? "visible" : "hidden"}
+        variants={containerVariants}
+        transition={{ duration: 1 }}
+        ref={containerRef}
+      >
         <h1 className="font-bold text-3xl font-serif">About Amjad</h1>
         <p className="my-5">
           Hey there, I&apos;m Amjad, a full stack developer.
@@ -50,10 +76,19 @@ export default function About() {
             initiatives.
           </p>
         </div>
-      </section>
-      <Group position="left" sx={{ margin: "2rem 0" }}>
-        <SocialMedia />
-      </Group>
+      </motion.section>
+
+      <motion.div
+        initial="hidden"
+        animate={socialMediaInView ? "visible" : "hidden"}
+        variants={socialMediaVariants}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        ref={socialMediaRef} // Attach the ref to the div element
+      >
+        <Group position="left" sx={{ margin: "2rem 0" }}>
+          <SocialMedia />
+        </Group>
+      </motion.div>
     </Container>
   );
 }

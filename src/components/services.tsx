@@ -63,7 +63,6 @@ const useStyles = createStyles((theme) => ({
 
   card: {
     position: "relative",
-    cursor: "pointer",
     overflow: "hidden",
     transition: "transform 150ms ease, box-shadow 100ms ease",
     padding: theme.spacing.xl,
@@ -75,7 +74,6 @@ const useStyles = createStyles((theme) => ({
 
     "&:hover": {
       boxShadow: theme.shadows.md,
-      transform: "scale(1.02)",
     },
 
     "&::before": {
