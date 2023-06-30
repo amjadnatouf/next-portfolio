@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { Metadata } from "next";
 import { ContactIconsList } from "../components/contactIconsList";
-import { FormEvent, useRef } from "react";
+import { FormEvent } from "react";
 import emailjs from '@emailjs/browser';
 import { showNotification } from "@mantine/notifications";
 import { motion } from "framer-motion";
@@ -47,6 +47,10 @@ const useStyles = createStyles((theme) => {
     form: {
       boxSizing: "border-box",
       flex: 1,
+
+      [BREAKPOINT]: {
+        marginTop:'2rem'
+      },
     },
 
     fields: {
@@ -95,12 +99,11 @@ const useStyles = createStyles((theme) => {
 
 export default function Contact() {
   const { classes } = useStyles();
-  const ref = useRef();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     emailjs
-      .sendForm('service_2ue2355', 'template_1xv1njw', ref.current, '44y2DhQy7o9qaoYpI')
+      .sendForm('service_2ue2355', 'template_1xv1njw', e.currentTarget, '44y2DhQy7o9qaoYpI')
       .then((result) => {
         console.log(result.text);
         showNotification({
@@ -115,6 +118,7 @@ export default function Contact() {
           color: 'red',
         });
       });
+      e.currentTarget.reset()
   };
 
   const formVariants = {
