@@ -87,8 +87,10 @@ const useStyles = createStyles((theme) => {
     control: {
       color: theme.colorScheme === "dark" ? theme.colors.gray[3] : theme.black,
       border: `1px solid ${theme.colors.gray[6]}`,
+      background: 'transparent',
       "&:hover": {
         color: theme.white,
+        background: theme.fn.darken("#228be6", 0.05),
       },
       [BREAKPOINT]: {
         flex: 1,

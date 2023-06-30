@@ -16,8 +16,13 @@ export default function Portfolio() {
   return (
     <Container className={classes.container}>
       <section className="mt-32">
-        <Title order={2} size={30} my={20}>
-          Some Things I’ve Built
+        <Title order={2} className={classes.portfolio_title} sx={() => ({
+          fontSize: 40,
+          '@media (max-width: 40em)': {
+          fontSize: 30,
+          },
+          })}>
+          SomeThings I’ve Built
         </Title>
         <>
           {getProjects().map((project) => (

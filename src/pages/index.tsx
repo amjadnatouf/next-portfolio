@@ -84,6 +84,22 @@ export const useStyles = createStyles((theme) => ({
       display: "none",
     },
   },
+
+  portfolio_title: {
+    color: theme.fn.primaryColor(),
+    position: "relative",
+    marginBottom: '2rem',
+    
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: rem(100),
+      height: rem(10),
+      borderBottom: `3px solid ${theme.fn.primaryColor()}`,
+    },
+  },
 }));
 
 const Home = () => {

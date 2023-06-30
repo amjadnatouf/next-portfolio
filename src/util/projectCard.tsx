@@ -2,6 +2,7 @@ import { Project } from "@/content/projects";
 import { Anchor, Image, Text, Title } from "@mantine/core";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import {useStyles} from '../pages/index'
 
 interface projectProps {
   project: Project;
@@ -12,10 +13,12 @@ export default function ProjectCard({ project }: projectProps) {
     triggerOnce: true
   });
 
+  const {theme} = useStyles()
+
   return (
     <ul className="project">
-      <li className="projects-list">
-        <div className="project-image" ref={ref}>
+      <li className="projects-list shadow-green-900">
+        <div className="project-image h-full" ref={ref}>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
@@ -43,7 +46,7 @@ export default function ProjectCard({ project }: projectProps) {
             {project.title}
           </Title>
           <motion.div
-            className="shadow-lg relative z-20 p-4 sm:p-6 rounded bg-slate-800 text-base md:text-lg"
+            className="shadow-lg transition duration-300 relative z-20 p-4 sm:p-6 rounded bg-slate-800 text-white text-base md:text-lg"
             color={"#fff"}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -54,7 +57,8 @@ export default function ProjectCard({ project }: projectProps) {
           <ul className="flex flex-wrap mt-3 technology">
             {project.technology.map((tech, index) => (
               <li
-                className="text-gray-700 dark:text-gray-400 text-sm mr-2 md:mr-4 mb-2"
+                className='text-sm mr-2 md:mr-4 mb-2'
+                 color={theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[1]}
                 key={index}
               >
                 {tech}
