@@ -34,6 +34,10 @@ export const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+
+    [theme.fn.smallerThan("md")]: {
+      flexDirection: 'column'
+    },
   },
 
   content: {
@@ -79,10 +83,6 @@ export const useStyles = createStyles((theme) => ({
 
   image: {
     flex: 1,
-
-    [theme.fn.smallerThan("md")]: {
-      display: "none",
-    },
   },
 
   portfolio_title: {

@@ -2,6 +2,7 @@ import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
 import { ReactElement } from "react";
 import carelyo from "../../public/assets/carelyo.webp";
 import loanCalc from "../../public/assets/loan-calculator.webp";
+import todoApp from "../../public/assets/todoApp.webp";
 
 interface linksObject {
   link: string;
@@ -51,6 +52,23 @@ export function getProjects(): Project[] {
         },
         {
           link: "https://github.com/amjadnatouf/loan-calculator",
+          title: <IconBrandGithub />,
+        },
+      ],
+    },{
+      id: "3",
+      image: todoApp.src,
+      description:
+        "The Todo App is a simple and intuitive task management application that helps you stay organized and productive. With its user-friendly interface, you can easily create, update, and delete tasks, keeping track of your progress and ensuring that nothing falls through the cracks. Whether you're managing personal to-dos or collaborating on team projects, the Todo App provides a convenient solution for efficiently managing your tasks and achieving your goals.",
+      title: "Todos App",
+      technology: ["node.js", "express.js","mongodb", "mongoose"],
+      links: [
+        {
+          link: "https://github.com/amjadnatouf/todo-app",
+          title: <IconExternalLink />,
+        },
+        {
+          link: "https://github.com/amjadnatouf/todo-app",
           title: <IconBrandGithub />,
         },
       ],
